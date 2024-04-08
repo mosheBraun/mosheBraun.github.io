@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>My Site!</title>
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guessing Game!</title>
+</head>
 <body>
-  <h1>This is my site!</h1>
-  <h2>And I'm A viewpoint Academy Student!</h2>
+  <h1>Guess the Number!</h1>
+  <p>I'm thinking of a number between 1 and 10. Can you guess it?</p>
+  <input type="number" id="guess" placeholder="Enter your guess">
+  <button onclick="checkGuess()">Guess</button>
+  <p id="message"></p>
+  <script>
+    const answer = Math.floor(Math.random() * 10) + 1; // Generate random number 1-10
+    let guesses = 0;
+
+    function checkGuess() {
+      const guess = document.getElementById('guess').value;
+      guesses++;
+
+      if (guess == answer) {
+        document.getElementById('message').textContent = `Congratulations! You guessed the number in ${guesses} tries.`;
+      } else if (guess < answer) {
+        document.getElementById('message').textContent = `Too low! Try again.`;
+      } else {
+        document.getElementById('message').textContent = `Too high! Try again.`;
+      }
+
+      document.getElementById('guess').value = ""; // Clear guess input after each try
+    }
+  </script> 
 </body>
 </html>
